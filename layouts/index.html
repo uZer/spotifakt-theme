@@ -11,13 +11,13 @@
         <ul id="og-grid" class="og-grid">
           {{ range $.Site.Data.playlists }}
           <li>
-            <a href="{{.external_urls.spotify}}"
-               data-largesrc="{{ range where .images "width" 640 }}{{.url}}{{end}}"
-               data-title="{{.name}}"
-               data-description="{{.description}}"
+            <a href="{{.Url}}"
+               data-largesrc="{{ range first 1 (or (where .Image "width" "=" 0) (where .Image "width" "=" 640)) }}{{.url}}{{end}}"
+               data-title="{{.Name}}"
+               data-description="{{.Description}}"
                data-buttontext="Open Spotify">
-              <img src="{{ range where .images "width" 640 }}{{.url}}{{end}}"
-                   alt="{{.name}}"
+              <img src="{{ range first 1 (or (where .Image "width" "=" 0) (where .Image "width" "=" 640)) }}{{.url}}{{end}}"
+                   alt="{{.Name}}"
                    width="200px" />
             </a>
           </li>
